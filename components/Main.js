@@ -55,7 +55,7 @@ const Main = () => {
     const handleClose = () => {
         setVisible(false);
         fadeOut(); 
-        setMessage('This is an in-app notification snackbar to show to the userwhen they perform an action.Clicking it should change the text') 
+        // setMessage('This is an in-app notification snackbar to show to the userwhen they perform an action.Clicking it should change the text') 
     }
 
     return (
@@ -119,14 +119,19 @@ const Main = () => {
             {/* snackbar */}
             {
                 visible ? (
-                    <Animated.View style={{ position: 'absolute', top: 10, flex: 1, alignItems: 'center', justifyContent: 'center', opacity: fadeAnim }}>
+                    <Animated.View style={[styles.snackContainer, { opacity: fadeAnim}]}>
                         <TouchableOpacity onPress={() => setMessage('User clicked on snackbar')} style={[styles.snackbar]}>
                             <Text style={{ color: 'white', fontSize: 16, width: '90%' }}>{message}</Text>
                             <Feather onPress={() => handleClose()} style={{ textAlign: 'center', marginRight: 10 }} name='x' size={30} color='white' />
                         </TouchableOpacity>
                     </Animated.View>
                 ) : (
-                    null
+                    <Animated.View style={[styles.snackContainer, { opacity: fadeAnim}]}>
+                        <TouchableOpacity onPress={() => setMessage('User clicked on snackbar')} style={[styles.snackbar]}>
+                            <Text style={{ color: 'white', fontSize: 16, width: '90%' }}>{message}</Text>
+                            <Feather style={{ textAlign: 'center', marginRight: 10 }} name='x' size={30} color='white' />
+                        </TouchableOpacity>
+                    </Animated.View>
                 )
             }
 
@@ -159,6 +164,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '98%'
+    },
+    snackContainer:{
+        position: 'absolute', 
+        top: 10, 
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center',
     },
     button: {
         backgroundColor: '#00e771',
