@@ -127,7 +127,7 @@ const Main = () => {
                     </Animated.View>
                 ) : (
                     <Animated.View style={[styles.snackContainer, { opacity: fadeAnim}]}>
-                        <TouchableOpacity onPress={() => setMessage('User clicked on snackbar')} style={[styles.snackbar]}>
+                        <TouchableOpacity style={[styles.snackbar]}>
                             <Text style={{ color: 'white', fontSize: 16, width: '90%' }}>{message}</Text>
                             <Feather style={{ textAlign: 'center', marginRight: 10 }} name='x' size={30} color='white' />
                         </TouchableOpacity>
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '98%'
+        width: '99%'
     },
     snackContainer:{
         position: 'absolute', 
