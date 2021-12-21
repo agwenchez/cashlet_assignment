@@ -109,7 +109,7 @@ const Main = () => {
                 </View>
             </View>
 
-            <TouchableOpacity onPress={() => handlePress()} style={[styles.button, { elevation: 0 }]} >
+            <TouchableOpacity onPress={() => handlePress()} style={[styles.button, styles.cardShadow]} >
                 <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>Show Snackbar</Text>
             </TouchableOpacity>
 
@@ -123,7 +123,7 @@ const Main = () => {
                         </TouchableOpacity>
                     </Animated.View>
                 ) : (
-                    <Animated.View style={[styles.snackContainer, { opacity: fadeAnim}]}>
+                    <Animated.View style={[styles.snackContainer, styles.cardShadow, { opacity: fadeAnim}]}>
                         <TouchableOpacity style={[styles.snackbar]}>
                             <Text style={{ color: 'white', fontSize: 16, width: '90%' }}>{message}</Text>
                             <Feather style={{ textAlign: 'center', marginRight: 10 }} name='x' size={30} color='white' />
@@ -146,12 +146,12 @@ const styles = StyleSheet.create({
     cardShadow: {
         shadowColor: '#000',
         shadowOffset: {
-            width: 0,
+            width: 1,
             height: 0
         },
         shadowOpacity: 0.4,
         shadowRadius: 1.41,
-        elevation: 5
+        elevation: 20
     },
     snackbar: {
         backgroundColor: '#e8177f',
