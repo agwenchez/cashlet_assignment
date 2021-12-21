@@ -53,9 +53,6 @@ const Main = () => {
     const handleClose = () => {
         setVisible(false);
         fadeOut(); 
-
-        // revert the message back to its original state before user click
-        setMessage('This is an in-app notification snackbar to show to the user when they perform an action.Clicking it should change the text') 
     }
 
     return (
