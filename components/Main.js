@@ -8,12 +8,11 @@ import { FontAwesome5, Feather } from '@expo/vector-icons';
 const Main = () => {
 
     const [visible, setVisible] = useState(false);
-    const [message, setMessage] = useState('This is an in-app notification snackbar to show to the userwhen they perform an action.Clicking it should change the text')
+    const [message, setMessage] = useState('This is an in-app notification snackbar to show to the user when they perform an action.Clicking it should change the text')
     const fadeAnim = useRef(new Animated.Value(0)).current
 
 
     const fadeIn = () => {
-        // console.log("Fade anim", fadeAnim)
         Animated.timing(
             fadeAnim,
             {
@@ -25,8 +24,8 @@ const Main = () => {
         ).start();
     }
 
-    const fadeOut = () => {
 
+    const fadeOut = () => {
         Animated.timing(
             fadeAnim,
             {
@@ -36,8 +35,6 @@ const Main = () => {
                 useNativeDriver: true
             }
         ).start();
-
-        console.log("Fade anim out", fadeAnim)
     }
 
 
@@ -45,17 +42,20 @@ const Main = () => {
         setVisible(true)
 
         fadeIn()
+
+        // auto close snackbar after 10
         setTimeout(() => {
             setVisible(false)
             fadeOut()
-
         }, 10000)
     }
 
     const handleClose = () => {
         setVisible(false);
         fadeOut(); 
-        // setMessage('This is an in-app notification snackbar to show to the userwhen they perform an action.Clicking it should change the text') 
+
+        // revert the message back to its original state before user click
+        setMessage('This is an in-app notification snackbar to show to the user when they perform an action.Clicking it should change the text') 
     }
 
     return (
@@ -119,7 +119,7 @@ const Main = () => {
             {/* snackbar */}
             {
                 visible ? (
-                    <Animated.View style={[styles.snackContainer, { opacity: fadeAnim}]}>
+                    <Animated.View style={[styles.snackContainer, styles.cardShadow, { opacity: fadeAnim}]}>
                         <TouchableOpacity onPress={() => setMessage('User clicked on snackbar')} style={[styles.snackbar]}>
                             <Text style={{ color: 'white', fontSize: 16, width: '90%' }}>{message}</Text>
                             <Feather onPress={() => handleClose()} style={{ textAlign: 'center', marginRight: 10 }} name='x' size={30} color='white' />
